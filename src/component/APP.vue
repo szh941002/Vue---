@@ -1,17 +1,22 @@
 <template>
     <div>
+        <!-- 公共的头跟尾 -->
         <app-header></app-header>
+        <router-view></router-view>
+        <app-footer></app-footer>
     </div>
 </template>
 
 <script>
 // 导入头部与底部的子组件  以及jquery
     import HeaderComponent from "./frame/Header.vue";
+    import FooterComponent from './frame/footer.vue';
     import $ from "jquery";
     export default {
         // 注册子组件
         components: {
-            appHeader: HeaderComponent
+            appHeader: HeaderComponent,
+            appFooter: FooterComponent
         },
         // 执行生命周期函数,模板挂载到视图后执行
         mounted() {
