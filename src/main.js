@@ -1,5 +1,6 @@
 // 引入第三方库
-import Vue from 'vue'
+import Vue from 'vue' ;
+import './css/style.css';
 
 
 // 导入根组件

@@ -38,7 +38,7 @@ module.exports = {
             },
             // url静态资源文件
             {
-                test: /\.(png|jpg|gif|jpeg|svg|woff|ttf)$/,
+                test: /\.(png|jpg|gif|jpeg|svg|woff|ttf|eot)$/,
                 // 指定小于10kb的图片才转为base64编码打包
                 use: [{ loader: 'url-loader', options: { limit: 10240 } }]
             },
