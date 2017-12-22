@@ -26,6 +26,8 @@
                                             <router-link :to="{ name: 'gsd', params: { id: item.id } }">{{ item.title }}</router-link>
                                         </dt>
                                         <dd>
+                                            <!-- 封装一个展示菜单列表的组件,把列表数据传递过去 -->
+                                            
                                             <router-link :to="{name:'gsd',params:{id:subitem.id}}" v-for='subitem in item.subcates' :key='subitem.id'>
                                                 {{subitem.title}}
                                             </router-link>
