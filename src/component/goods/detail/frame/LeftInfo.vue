@@ -40,7 +40,7 @@
                 <dd>
                     <div class="btn-buy" id="buyButton">
                         <button class="buy">立即购买</button>
-                        <button class="add">加入购物车</button>
+                        <button class="add" >加入购物车</button>
                     </div>
                 </dd>
             </dl>
