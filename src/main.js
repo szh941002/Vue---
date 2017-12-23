@@ -25,9 +25,9 @@ Vue.prototype.$api = api ;
 import routerConfig from './router/index.js';
 const vueRouter = new VueRouter(routerConfig);
 
-// 导入购物车组件
-// import shopcart from './component/goods/detail/frame/cart.js';
-// const cart = new Vuex.Store(shopcart);
+// 导入购物车配置
+import storeConfog from './component/store/index.js';
+const cart = new Vuex.Store(storeConfog);
 // 导入根组件
 import Appcomponent from './component/App.vue';
 
@@ -36,5 +36,5 @@ new Vue({
     el : '#add',
     render : c=> c(Appcomponent),
     router: vueRouter ,
-    // store: cart
+    store: cart
 });

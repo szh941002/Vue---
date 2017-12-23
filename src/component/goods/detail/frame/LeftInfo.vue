@@ -40,7 +40,7 @@
                 <dd>
                     <div class="btn-buy" id="buyButton">
                         <button class="buy">立即购买</button>
-                        <button class="add" >加入购物车</button>
+                        <button class="add" @click="addShopcart">加入购物车</button>
                     </div>
                 </dd>
             </dl>
@@ -62,6 +62,10 @@
             // 改变的数量
             handleChange(){
 
+            },
+             // 加入购物车, 修改vuex管理的全局shopcartData数据
+            addShopcart() {
+                this.$store.commit('upShopcartTotal', this.goodsCount);
             }
         }
     };

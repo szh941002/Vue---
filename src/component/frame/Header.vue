@@ -12,10 +12,10 @@
                     <a href="/register.html">注册</a>
                     <strong>|</strong>
                     <!-- <a href="/content/contact.html"><i class="iconfont icon-phone"></i>联系我们</a> -->
-                     <!-- <a href="/cart.html">
+                     <a href="/cart.html">
                         <i class="iconfont icon-cart"></i>
                         购物车({{ $store.getters.shopcartTotal }})
-                    </a> -->
+                    </a>
                 </div>
             </div>
         </div>
@@ -73,7 +73,7 @@
 
 
 <script>
-export default {};
+    export default {};
 </script>
 
 <style scoped>
