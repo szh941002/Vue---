@@ -23,7 +23,7 @@
             <p v-if="!commentList.length"  style="margin:5px 0 15px 69px;line-height:42px;text-align:center;border:1px solid #f7f7f7;">
                 暂无评论，快来抢沙发吧！
             </p>
-            <li v-for='item in commentList' :key='item.reply_time'>
+            <li v-for='(item, i) in commentList' :key='i'>
                 <div class="avatar-box">
                     <i class="iconfont icon-user-full"></i>
                 </div>
@@ -75,35 +75,40 @@
                 this.$http.get(this.$api.commentList+this.tablename+'/'+this.artId,
                 {params :this.query})
                 .then(rsp=>{
-                    console.log(rsp.data.message);
+                    // console.log(rsp.data.message);
                     this.commentList = rsp.data.message;
                     this.totalcount = rsp.data.totalcount
                 })
             },
             // 提交评论
+
             subComment (){
+                // if(this.commentContent.trim()&&this.commentContent==''){
+                //   return  false
+                // }
+                let reg = /\w/g; //正则匹配,不能有空格,空值
+                // console.log(reg.test(this.content));
+                // return;
+                if(!reg.test(this.commentContent)){
+                        return ;
+                    }   
                 this.$http.post(this.$api.comment+this.tablename+'/'+this.artId,
                 {commenttxt :this.commentContent})
                 .then(rsp=>{
-                    // if(!textarea.value){
-                    //     return ;
-                    // }
                     // 评论成功后的提示
                     this.$message({
                         message: '恭喜你，发表成功',
                         type: 'success'
                      });
-                    // 评论用户成功以后,手动加一个 unshift添加到数组最前面
-                    
-                    // if(commenttxt!=''){
-                            this.commentList.unshift({
-                            user_name: '匿名用户',
-                            user_ip: '127.0.0.1',
-                            add_time: new Date(),
-                            content: this.commentContent
-                        });
-                        this.commentContent = '';
-                    // }
+                    // 评论用户成功以后,手动加一个 unshift添加到数组最前面              
+                    this.getCommentList();            
+                        //     this.commentList.unshift({
+                        //     user_name: '匿名用户',
+                        //     user_ip: '127.0.0.1',
+                        //     add_time: new Date(),
+                        //     content: this.commentContent
+                        // });
+                    this.commentContent = '';
                 })
             },
             // 每页数量变化是触发
@@ -121,6 +126,19 @@
         },
         created(){
             this.getCommentList();
+        },
+        // 监听数据的变化,解决商品列表没有更跟新的问题
+        watch:{
+            // 2者取其一都可以
+            // $route(){
+            //     console.log(this.$route);
+            //     this.getCommentList();
+            // },
+            // 最好是用id 去监听变化,从而更新不同的id列表
+            artId(){
+                // console.log(this.artId);
+                this.getCommentList();
+            }  
         }
     };
 </script>
