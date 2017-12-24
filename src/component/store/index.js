@@ -11,23 +11,22 @@ export default {
     // 获取状态, 记住以属性的方式使用
     getters: {
         // 取原值
-       getshopcartData(state) {
+       getShopcartData(state) {
            return state.shopcartData;
         },
         // 获取商品的总数
         // 1.先取出所有商品的购买数量,对象中每个元素的value既购买数量
         // 2.在通过reduce方法把数量累加起来.
         // 3.返回累加的结果集
-        getshopcartTotal(state){
-            return object.values(state.shopcartData).reduce((s,v)=>s+v,0);
+        getShopcartTotal(state){
+            return Object.values(state.shopcartData).reduce((s,v)=>s+v,0);
         },
         // 获取所有商品的ID 
         // 1.先取出所有商品的id,对象中每个元素的key既为商品的id
         // 2.通过join方法把所有id通过逗号,连接成字符串
         // 3.返回字符结果
         getshopcarIDs(state){
-            return object.keys(status.shopcartData).join(',');
-           
+            return Object.keys(state.shopcartData).join(',');
         }
     },
 
@@ -40,7 +39,7 @@ export default {
             // 因为这里可能是新增,也可能是修改,为了保证视图一定刷新,所以改用vue.set
             // vue.set(target,key,value)
             Vue.set(state.shopcartData,params.id,params.val);
-            localStorage.setItem('shopcartData', JSON.stringify(status.shopcartData));
+            localStorage.setItem('shopcartData', JSON.stringify(state.shopcartData));
         },
         // 增加操作,在原有的基础上累加购买数量
         // 1.先判断原ID有没有该id的购买记录
@@ -51,12 +50,12 @@ export default {
             }else{
                 Vue.set(state.shopcartData,params.id,params.val);
             }
-            localStorage.setItem('shopcartData', JSON.stringify(status.shopcartData));
+            localStorage.setItem('shopcartData', JSON.stringify(state.shopcartData));
         },
         // 删除购买记录 根据id去删除 vue.delete(target,key)方法
         delShopcartData(state,params){
             Vue.delete(state.shopcartData,params.id);
-            localStorage.setItem('shopcartData', JSON.stringify(status.shopcartData));
+            localStorage.setItem('shopcartData', JSON.stringify(state.shopcartData));
         }
     }
 }

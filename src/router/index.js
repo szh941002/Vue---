@@ -3,6 +3,9 @@ import GoodsHomeComponent from '../component/goods/GoodsHome.vue';
 import GoodsMoreComponent from '../component/goods/more/GoodsMore.vue';
 import GoodsDetailComponent from '../component/goods/detail/GoodsDetail.vue';
 
+// 导入购物车模块组件
+import ShopcartComponent from '../component/shopcart/Shopcart.vue';
+
 // 导出路由配置
 export default {
     routes :[
@@ -12,5 +15,8 @@ export default {
         { name: 'gs', path: '/goods', component: GoodsHomeComponent},
         { name: 'gsm', path: '/goods/more', component: GoodsMoreComponent},
         { name: 'gsd', path: '/goods/detail/:id', component: GoodsDetailComponent},
+
+        // 购物车
+        { name: 's', path: '/shopcart', component: ShopcartComponent}
     ]
 }
